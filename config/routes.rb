@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registration, :password], controllers: {
     sessions: "admin/sessions"
   }
-  root to: "homes#top"
+  # root to: "homes#top"
   get "/about" => "homes#about"
   resources :items, only: [:index, :show]
   resources :cart_items, only: [:index, :update, :destroy, :create] do
