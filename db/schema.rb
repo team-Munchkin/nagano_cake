@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2023_07_17_073843) do
     t.string "first_name"
     t.string "family_name_kana"
     t.string "first_name_kana"
-    t.string "posy_code"
+    t.string "post_code"
     t.string "address"
     t.string "phone_number"
     t.boolean "is_deleted", default: false, null: false
