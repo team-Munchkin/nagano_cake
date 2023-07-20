@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+
   scope module: :public do
     get 'customers/edit'  => 'customers#edit' ,as: 'edit_customers'
     patch 'customers' => 'customers#update'
   end
+
   devise_for :customers,skip: [:password], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -10,8 +12,10 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registration, :password], controllers: {
     sessions: "admin/sessions"
   }
+
   scope module: :public do
     # root to: "homes#top"
+
     get "/about" => "homes#about"
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create] do
@@ -21,13 +25,15 @@ Rails.application.routes.draw do
     resource :customers, only: [:show, :edit ] do
       get :unscribe, on: :collection
       patch :withdrawal, on: :collection
+
     end
     resources :orders, only: [:create, :index, :show, :new] do
       post :confirm, on: :collection
       get :complete, on: :collection
     end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  end
+
+ end
 
   namespace :admin do
     root to: "homes#top"
