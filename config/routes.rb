@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
+  scope module: :public do
+    get 'customers/edit'  => 'customers#edit' ,as: 'edit_customers'
+    patch 'customers' => 'customers#update'
   end
   devise_for :customers,skip: [:password], controllers: {
     registrations: "public/registrations",
@@ -13,21 +10,24 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registration, :password], controllers: {
     sessions: "admin/sessions"
   }
-  # root to: "homes#top"
-  get "/about" => "homes#about"
-  resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :update, :destroy, :create] do
-    delete :destroy_all, on: :collection
+  scope module: :public do
+    # root to: "homes#top"
+    get "/about" => "homes#about"
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      delete :destroy_all, on: :collection
+    end
+
+    resource :customers, only: [:show, :edit ] do
+      get :unscribe, on: :collection
+      patch :withdrawal, on: :collection
+    end
+    resources :orders, only: [:create, :index, :show, :new] do
+      post :confirm, on: :collection
+      get :complete, on: :collection
+    end
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
-  resource :customers, only: [:show, :edit, :update] do
-    get :unscribe, on: :collection
-    patch :withdrawl, on: :collection
-  end
-  resources :orders, only: [:create, :index, :show, :new] do
-    post :confirm, on: :collection
-    get :complete, on: :collection
-  end
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
     root to: "homes#top"
