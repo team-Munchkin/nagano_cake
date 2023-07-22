@@ -29,16 +29,17 @@
            <h3>¥<%= @item.taxin_price.to_s(:delimited) %><span style= font-size:13px>(税込)</span></h3>
        </div>
 
-       <div class= 'group'>
-          <%= form_with model:@cart_item,url:cart_items_path,method: :post,local:true do |f| %>
-            <%= f.hidden_field :item_id, value: @item.id %></div>
+        <div class= 'group'>
+         <% if @item.is_active == true %>
+          <%= form_with model:@cart_items,url:cart_items_path,method: :post,local:true do |f| %>
+           <%= f.hidden_field :item_id, value: @item.id %>
             <div class="form-inline">
-              <%= f.select :quantity,[1,2,3,4,5,6,7,8,9,10],{include_blank: '個数選択'}, {class:'form-control' } %>
-              <%=link_to "カートに入れる", cart_items_path, class: 'btn btn-success  ml-5' %>
-            </div>
+           <%= f.select :quantity,[1,2,3,4,5,6,7,8,9,10],{include_blank: '個数選択'}, {class:'form-control' } %>
+           <%= f.submit 'カートに入れる' ,class: 'btn btn-success ml-5'%>
+          </div>
          <% end %>
+        <% end %>
        </div>
-
     </div>
 　 </div>
 　</div>
