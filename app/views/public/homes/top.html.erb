@@ -1,0 +1,59 @@
+
+<div class="row pt-5 mt-3">
+  <div class='col-2 offset-1'>
+    <table class= "genre_search">
+      <tr>
+        <th class= "text-center">ジャンル検索</th>
+      </tr>
+      <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to genre_path(genre.id),class: "text-secondary" do%>
+              <%= genre.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-8 offset-1">
+    <div class="row">
+      <div class="card">
+        <%= image_tag 'cake02.jpg',size: "640x427" %>
+        <div class="card-img-overlay">
+          <p id="welcome-message" class="text-white">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-9 offset-3">
+    <div class="row">
+      <h4 class="mt-3 mb-4">新着商品</h4>
+    </div>
+    <div class="row">
+      <div class="d-flex flex-wrap">
+        <% @newest_items.each do |item| %>
+          <div class="col-3">
+            <%= link_to item_path(item.id) do %>
+              <p class= "item_image"><%= image_tag item.get_image, size: '213x142' %></p>
+              <p class= "item_name text-secondary"><%= item.name %></p>
+              <p class= "item_price text-secondary">¥<%= item.taxin_price.to_s(:delimited) %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3 offset-9">
+        <%= link_to "すべての商品を見る＞",items_path %>
+      </div>
+    </div>
+  </div>
+</div>
