@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
 before_action :authenticate_customer!
 
   def index
-    @cart_item = CartItem.all
+    @cart_items = CartItem.all
   end
 
   def create

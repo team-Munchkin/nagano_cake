@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+
+header{
+   background-color: #7b5544;
+  border-bottom: 20px double #6b3f31;
+}
+
+footer{
+  background-color: #6b3f31;
+}
+
+
+// メイン部分背景色
+#main{
+  background-color: #fffff9;
+}
+
+// フラッシュメッセージ設定
+#flash-notifications{
+  color: white;
+
+  .notice {
+    background-color: #3cb371;
+    padding: 12px 20px;
+  }
+
+  .alert {
+    background-color: #fa8072;
+  }
+}
+
+// 新規登録時のエラーメッセージ表示
+#error_explanation{
+  color: white;
+  background-color: #fa8072;
+  padding: 5px 20px;
+}
+
+
+#about{
+  font-size: 75px;
+}
+
+// homeページの画像にオーバーレイした文字の位置調整
+.card-img-overlay{
+  background-color: rgba(0,0,0,0.2) ;
+  font-weight: bold;
+}
+#welcome-message{
+  padding: 150px 0 0 100px;
+  line-height: 1.5;
+}
+
+// ジャンル検索テーブル枠線
+.genre_search{
+  border: 1px solid #000;
+  width: 200px;
+}
+.genre_search th{
+  border-bottom: 1px solid #000;
+}
+.genre_search td{
+  padding-left: 15px;
+  line-height: 2;
+}

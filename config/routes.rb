@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    # root to: "homes#top"
+    root to: "homes#top"
 
     get "/about" => "homes#about"
     resources :items, only: [:index, :show]
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       delete :destroy_all, on: :collection
     end
 
-    resource :customers, only: [:show, :edit ] do
+    resource :customers, only: [:show] do
       get :unscribe, on: :collection
       patch :withdrawal, on: :collection
 
@@ -31,7 +31,13 @@ Rails.application.routes.draw do
       post :confirm, on: :collection
       get :complete, on: :collection
     end
+    
+    resources :genres, only: [:show]
+    
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    
+    resources :searches, only: [:index] 
+      
 
  end
 
@@ -42,6 +48,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :update, :edit, :index]
     resources :orders, only: [:show, :update]
     resources :order_items, only: [:update]
+    resources :searches, only: [:index] 
   end
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

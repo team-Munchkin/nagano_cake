@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def show
   end
 
@@ -7,7 +9,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     if current_customer.update(customer_params)
-      redirect_to customers_path(current_customer)
+      redirect_to customers_path
     else
       render "edit"
       flash[:alert]
