@@ -3,15 +3,15 @@ class Public::CartItemsController < ApplicationController
 before_action :authenticate_customer!
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
   end
 
   def create
-    cart_item = CartItem.new(cart_item_params)
+    cart_item = current_customer.cart_items.build(cart_item_params)
     cart_item.customer_id = current_customer.id
     cart_item.item_id = cart_item_params[:item_id]
-    if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
-      cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
       cart_item.update(quantity: cart_item.quantity)
       redirect_to cart_items_path

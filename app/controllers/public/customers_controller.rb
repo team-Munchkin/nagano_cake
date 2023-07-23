@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     if current_customer.update(customer_params)
-      redirect_to customers_path
+      redirect_to customers_path 
     else
       render "edit"
       flash[:alert]
