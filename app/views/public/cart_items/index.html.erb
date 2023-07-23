@@ -2,7 +2,6 @@
 <div class= "container py-5">
     <div  class= "row  mb-3">
         <div class= "col-md-4"><h4>ショッピングカート</h4></div>
-        <div id="destroy_all" class= 'col-md-3 offset-md-5'>
             <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete,"data-confirm" => "商品を削除しますか？", class: "btn btn-danger "%>
         </div>
     </div>

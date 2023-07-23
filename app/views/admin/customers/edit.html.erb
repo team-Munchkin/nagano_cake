@@ -1,0 +1,75 @@
+<div class="container">
+   <div class="row">
+     <div class="col-8">
+       <h4 class="font-weight-bold ml-5 mb-5"><%= @customer.family_name %> <%= @customer.first_name %>の会員情報編集</h4>
+     </div>
+   </div>
+
+   <div class="row">
+   <div class="col-10">
+       <div class="d-flex bd-highlight">
+         <span class="flex-fill bd-highlight col-3">会員ID</span>
+         <p><%= @customer.id %></p>
+       </div>
+     <%= form_with model: @customer,url: admin_customer_path(@customer), local: true do |f| %>
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">氏名</span>
+        <p class="form_group">
+          <%= f.text_field :family_name ,class: "form_control mr-4 flex-fill" %>
+          <%= f.text_field :first_name ,class: "form_control flex-fill bd-highlight" %>
+        </p>
+      </div>
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">フリガナ</span>
+        <p class="form_group">
+          <%= f.text_field :family_name_kana ,class: "form_control mr-4 flex-fill" %>
+          <%= f.text_field :first_name_kana ,class: "form_control flex-fill bd-highlight" %>
+        </p>
+      </div>
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">郵便番号</span>
+        <p class="form_group">
+          <%= f.text_field :post_code ,class: "form_control flex-fill bd-highlight" %>
+        </p>
+      </div>
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">住所</span>
+        <p class="form_group">
+          <%= f.text_field :address ,class: "form_control flex-fill bd-highlight",size: "70" %>
+        </p>
+      </div>
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">電話番号</span>
+        <p class="form_group">
+          <%= f.text_field :phone_number ,class: "form_control flex-fill bd-highlight" %>
+        </p>
+      </div>
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">メールアドレス</span>
+        <p class="form_group">
+          <%= f.text_field :email ,class: "form_control flex-fill bd-highlight" %>
+        </p>
+      </div>
+
+      <div class="d-flex bd-highlight">
+        <span class="flex-fill bd-highlight col-3">会員ステータス</span>
+        <p class="form_group">
+          <%= f.radio_button :is_deleted, :false %>
+          <%= f.label :is_active_false, "有効" %>
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :is_active_true, "退会" %>
+        </p>
+      </div>
+
+        <div class="d-flex bd-highlight">
+          <span class="flex-fill bd-highlight col-3"></span>
+          <span class="form_group">
+            <%= f.submit "変更を保存" ,class: "btn btn-success px-5 flex-fill bd-highlight" %>
+         </div>
+      <% end %>
+  </div>
+</div>
+
+
+
+</div>

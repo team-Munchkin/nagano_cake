@@ -14,8 +14,11 @@ class Customer < ApplicationRecord
   validates :post_code, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
+  validates :is_deleted, inclusion: { in: [true, false] }
 
   def active_for_authentication?
     super && (is_deleted == false)
   end
 end
+
+
