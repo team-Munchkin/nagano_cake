@@ -6,6 +6,8 @@ class Customer < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :items, through: :cart_items
+  has_many :orders, dependent: :destroy
+  has_many :addresses, dependent: :destroy
 
   validates :family_name,length: { in: 1..10 }
   validates :first_name,length: { in: 1..10 }
@@ -18,6 +20,10 @@ class Customer < ApplicationRecord
 
   def active_for_authentication?
     super && (is_deleted == false)
+  end
+
+  def current_address_display
+    '〒' + post_code + '' + address + family_name + first_name
   end
 end
 
