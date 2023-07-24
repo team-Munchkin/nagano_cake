@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-   #before_action :authenticate_admin! ログインしているか確認
+   before_action :authenticate_admin! 
 
   def new
     @item = Item.new
