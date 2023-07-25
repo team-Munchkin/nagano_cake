@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-before_action :authenticate_customer!
+
   def index
     @item_all = Item.all
     @items = Item.page(params[:page])

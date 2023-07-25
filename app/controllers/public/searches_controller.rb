@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-before_action :authenticate_customer!
+
   def index
     @keyword = search_params[:keyword]
     @items = Item.search(search_params[:keyword])
