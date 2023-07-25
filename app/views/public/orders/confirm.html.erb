@@ -1,8 +1,8 @@
  <div class="container">
    <div class="row justify-content-center">
-     <h4 class="col-3 offset-1 mb-5 font-weight-bold text-center" style="background-color: #f1f1f1;">注文情報確認</h4>
-     <div class="col-8"></div>
-     <div class="col-9">
+     <h4 class="col-md-3 offset-1 mt-5 mb-5 font-weight-bold text-center" style="background-color: #f1f1f1;">注文情報確認</h4>
+     <div class="col-md-8"></div>
+     <div class="col-xs-12 col-md-9">
        <table class="table table-bordered">
         <thead class="", style="background-color: #f1f1f1">
           <tr>
@@ -35,7 +35,7 @@
         </tbody>
       </table>
      </div>
-     <div class="col-3">
+     <div class="col-xs-12 col-md-3">
        <table class="table table-bordered">
     <tr>
       <th class="", style="background-color: #f1f1f1">送料</th>
@@ -51,12 +51,13 @@
     </tr>
 </table>
      </div>
-     <h6 class="col-2 mb-5 font-weight-bold text-center">支払方法</h6>
-     <div class="col-10">
+     <span class="col-xs-4 col-sm-2 mb-5 font-weight-bold">支払方法</span>
+     <div class="col-xs-4 col-sm-10">
        <%= @order.payment_method_i18n %>
      </div>
-     <h6 class="col-2 mb-5 font-weight-bold text-center">お届け先</h6>
-     <div class="col-10">
+
+     <span class="col-xs-4 col-sm-2 mb-5 font-weight-bold">お届け先</span>
+     <div class="col-xs-4 col-sm-10">
        〒<%= @order.post_code %>
        <%= @order.address %></br>
        <%= @order.post_name %>
