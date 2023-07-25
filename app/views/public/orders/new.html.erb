@@ -1,52 +1,55 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-11 justify-content-center">
-      <h4 class="col-3 mb-5 font-weight-bold text-center" style="background-color: #f1f1f1;">注文情報入力</h4>
-<%= form_with model: @order, url: '/orders/confirm' do |f| %>
-    <h5 class="font-weight-bold">支払方法</h5>
-    <div class="form-group col-5 ml-3">
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
-    <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></br>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
-    </div>
+    <h4 class="col-3 offset-1 mt-5 mb-3 font-weight-bold text-center" style="background-color: #f1f1f1;">注文情報入力</h4>
+    <div class="col-12">
+      <%= form_with model: @order, url: '/orders/confirm' do |f| %>
+        <h5 class="font-weight-bold">支払方法</h5>
+          <div class="form-group col-5 ml-3">
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></br>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
+          </div>
+        <h5 class="font-weight-bold">お届け先</h5>
+          <div class="form-group col-11 ml-3">
+            <%= f.radio_button :select_address, 0, checked: true %>
+            <span>ご自身の住所</span>
+              <div class="col-11">
+                <%= current_customer.current_address_display %>
+              </div>
+          </div>
+          <div class="form-group col-11 ml-3">
+            <%= f.radio_button :select_address, 1 %>
+            <span>登録済みの住所から選択</span>
+            <div class="col-11 d-flex">
+              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), {class: "rounded flex-fill"} %>
+            </div>
+          </div>
+          <div class="form-group col-11 ml-3">
+            <%= f.radio_button :select_address, 2 %>
+            <span>新しいお届け先</span>
+            <div class="d-flex col-11 mb-1">
+              <span class="flex-fill bd-highlight col-3 align-items-center">郵便番号(ハイフンなし)</span>
+                <%= f.text_field :post_code, placeholder: "0000000", class: "rounded" %>
+            </div>
+            <div class="d-flex col-11 mb-1">
+              <span class="flex-fill bd-highlight col-3 align-items-center">住所</span>
+                <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "flex-fill rounded" %>
+            </div>
+            <div class="d-flex col-11">
+              <span class="flex-fill bd-highlight col-3 align-items-center">宛名</span>
+                <%= f.text_field :post_name, placeholder: "令和道子", class: "rounded" %>
+            </div>
+          </div>
+          <div class="d-flex bd-highlight justify-content-center mb-2">
+            <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+          </div>
 
-    <h5 class="font-weight-bold">お届け先</h5>
-    <div class="form-group">
-    <div class="d-flex bd-highlight">
-      <%= f.radio_button :select_address, 0, checked: true %>
-      <span class="flex-fill bd-highlight col-3 mr-5">ご自身の住所</span>
     </div>
-    <div class="col-11 mb-2">
-      <%= current_customer.current_address_display %>
-    </div>
+  </div>
+</div>
 
-    <div class="d-flex bd-highlight">
-      <%= f.radio_button :select_address, 1 %>
-      <span class="flex-fill bd-highlight col-3 mr-5">登録済みの住所から選択</span>
-    </div>
-    <div class="d-flex bd-highlight mx-auto">
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), {class: "flex-fill"} %>
-    </div>
-    <div class="d-flex bd-highlight">
-    <%= f.radio_button :select_address, 2 %>
-    <span class="flex-fill bd-highlight col-3 mr-5">新しいお届け先</span>
-    </div>
-    <div class="d-flex bd-highlight mb-2">
-      <span class="flex-fill bd-highlight col-3 align-items-center ">郵便番号(ハイフンなし)</span>
-      <%= f.text_field :post_code, placeholder: "0000000" %>
-    </div>
-    <div class="d-flex bd-highlight mb-2">
-      <span class="flex-fill bd-highlight col-3">住所</span>
-      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "flex-fill" %>
-    </div>
-    <div class="d-flex bd-highlight mb-2">
-      <span class="flex-fill bd-highlight col-3">宛名</span>
-      <%= f.text_field :post_name, placeholder: "令和道子" %>
-    </div>
-    <div class="d-flex bd-highlight justify-content-center mb-2">
-    <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
-    </div>
+
     </div>
     </div>
 <% end %>
