@@ -4,6 +4,7 @@ class Admin::SearchesController < ApplicationController
   def index
     @keyword = search_params[:keyword]
     @items = Item.search(search_params[:keyword])
+    @search_items = @items.page(params[:page]).per(20)
   end
 
   protected

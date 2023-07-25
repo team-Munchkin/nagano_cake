@@ -1,45 +1,45 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-2 ml-5 text-center">
-      <h4 class="mb-4 font-weight-bold" style="background-color: #f1f1f1;">マイページ</h4>
+    <div class="col-lg-2 col-md-4 col-sm-12 col-12 ml-md-5 text-center">
+      <h4 class="mb-4 font-weight-bold title">マイページ</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 justify-content-start">
-      <table class="table table-borderless col-5">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12 justify-content-start">
+      <table class="table table-borderless col-lg-5 col-md-5 col-sm-12 col-12">
         <th style="width: 40%"><h5 class="font-weight-bold mt-2">登録情報</h5></th>
         <td><%= link_to "編集する", edit_customers_path , class: "btn btn-success px-4" %></td>
       </table>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered border-dark">
           <tr>
-            <th class="table-light" style="background-color: #f1f1f1;">氏名</th>
+            <th class="head">氏名</th>
             <td><%= current_customer.family_name %> <%= current_customer.first_name %></td>
           </tr>
           <tr>
-            <th class="table-light" style="background-color: #f1f1f1;">カナ</th>
+            <th class="head">カナ</th>
             <td><%= current_customer.family_name_kana %> <%= current_customer.first_name_kana %></td>
           </tr>
           <tr>
-            <th class="table-light" style="background-color: #f1f1f1;">郵便番号</th>
+            <th class="head">郵便番号</th>
             <td><%= current_customer.post_code %></td>
           </tr>
           <tr>
-            <th class="table-light" style="background-color: #f1f1f1;">住所</th>
+            <th class="head">住所</th>
             <td><%= current_customer.address %></td>
           </tr>
           <tr>
-            <th class="table-light" style="background-color: #f1f1f1;">電話番号</th>
+            <th class="head">電話番号</th>
             <td><%= current_customer.phone_number%></td>
           </tr>
           <tr>
-            <th class="table-light" style="background-color: #f1f1f1;">メールアドレス</th>
+            <th class="head">メールアドレス</th>
             <td><%= current_customer.email%></td>
           </tr>
         </table>
 
-      <table class="table table-borderless col-5">
+      <table class="table table-borderless col-lg-5 col-md-5 col-sm-12 col-12">
         <tr>
           <th style="width: 40%"><h5 class="font-weight-bold mt-2">配送先</h5></th>
           <td><%= link_to "一覧を見る", addresses_path , class: "btn btn-sm btn-primary px-4" %></td>

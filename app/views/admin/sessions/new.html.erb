@@ -1,17 +1,21 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8 justify-content-center">
-      <h4 class="col-4 mb-5 font-weight-bold text-center" style="background-color: #f1f1f1;">管理者ログイン</h4>
+<div class="container py-5">
+  <div class="row">
+    <h4 class="col-lg-3 col-md-4 col-sm-12 col-12 offset-md-1 mb-5 font-weight-bold text-center title">
+      管理者ログイン
+    </h4>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-11 offset-sm-1">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="d-flex bd-highlight">
-            <span class="flex-fill bd-highlight col-1"></span>            
-            <span class="flex-fill bd-highlight col-3 ml-5">メールアドレス</span>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_control flex-fill bd-highlight", size: "50", placeholder: "sample@example.com" %>
+          <div class="d-flex flex-wrap mb-3">
+            <span class="flex-fill col-xl-1"></span>
+            <span class="flex-fill col-lg-3 col-md-4 col-12 ml-md-5">メールアドレス</span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_control flex-fill", size: "50", placeholder: "sample@example.com" %>
           </div>
-          <div class="d-flex bd-highlight">
-            <span class="flex-fill bd-highlight col-1"></span>
-            <span class="flex-fill bd-highlight col-3 ml-5">パスワード</span>
-              <%= f.password_field :password, autocomplete: "current-password", class: "form-control flex-fill bd-highlight", size: "50" %>
+          <div class="d-flex flex-wrap bd-highlight mb-3">
+            <span class="flex-fill col-xl-1"></span>
+            <span class="flex-fill col-md-3 col-12 ml-md-5">パスワード</span>
+              <%= f.password_field :password,class: "form_control flex-fill bd-highlight",size: "50", autocomplete: "current-password" %>
            </div>
           <div class="d-flex bd-highlight">
             <span class="flex-fill bd-highlight col-1"></span>

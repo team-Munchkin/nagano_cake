@@ -1,9 +1,9 @@
 <div class='container px-5 my-5 px-sm-0'>
   <div class='row'>
-    <div class='col-2'>
+    <div class='col-lg-2 col-md-2 col-sm-12 col-12 offset-md-0 offset-1 mb-5'>
       <table class= "genre_search">
-        <tr>
-          <th class= "text-center">ジャンル検索</th>
+        <tr class="head">
+          <th class= "text-center"><i class="fa-solid fa-grip-vertical" style="color: #4c2e30;"></i> ジャンル検索</th>
         </tr>
         <% @genres.each do |genre| %>
           <tr>
@@ -17,14 +17,14 @@
       </table>
     </div>
 
-    <div class= 'col-9 offset-1'>
+    <div class= 'col-lg-9 col-md-8 col-sm-10 col-9 offset-lg-1 offset-md-2 offset-1'>
       <h4 class="mb-4">ジャンル検索 [<%= @genre.name %>]<span style= font-size:20px>(全<%= @genre.items.count %>件)</span></h4>
 
 
      <div class= 'row'>
-      <% @genre.items.each do |item| %>
+      <% @genre_pages.each do |item| %>
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 offset-sm-0 offset-2">
           <%= link_to item_path(item.id),class: "text-secondary" do %>
             <p class= "item_image"><%= image_tag item.get_image, size: '213x142' %></p>
             <p class= "item_name"><%= item.name %></p>

@@ -13,21 +13,44 @@
  *= require_tree .
  *= require_self
  */
+// *{
+//   border: 2px solid red;
+// }
  
-
+ body {
+   min-height: 100vh;
+ }
 header{
    background-color: #7b5544;
   border-bottom: 20px double #6b3f31;
 }
+// .navbar-toggler{
+//   position: fixed;
+//   top: 30px;
+//   right: 30px;
+// }
 
 footer{
   background-color: #6b3f31;
 }
-
+.title{
+  background-color: #e6bfb2;
+  border-radius: 20px;
+  color: #3f312b;
+}
+.head{
+  background-color: #e6bfab;  
+  color: #3f312b;
+}
+.t-body{
+  background-color: #fdede4;
+}
 
 // メイン部分背景色
 #main{
   background-color: #fffff9;
+  min-height: 680px;
+  max-height: 5000px;
 }
 
 // フラッシュメッセージ設定
@@ -68,13 +91,108 @@ footer{
 
 // ジャンル検索テーブル枠線
 .genre_search{
-  border: 1px solid #000;
+  border: 1px solid #6b3f31;
   width: 200px;
 }
 .genre_search th{
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #6b3f31;
 }
 .genre_search td{
   padding-left: 15px;
   line-height: 2;
+}
+
+
+// 以下レスポンシブ
+
+/* タブレット縦置きサイズ（768px）以下 */
+@media screen and (max-width:768px) {
+  // カスタマー
+  // トップ画面
+  .genre_search{
+    width: 80%;
+  }
+  .card, .new-items{
+    margin: 0 auto;
+  }
+  // about画面
+  #about{
+    font-size: 60px;
+  }
+  .about_p{
+    font-size: 18px;
+  }
+  // フォームサイズ
+  input[type="text"] {
+  width: 90%;
+  height: 30px;
+  }
+  input[type="email"] {
+    width: 400px;
+    height: 30px;
+  }
+  input[type="password"] {
+    width: 400px;
+    height: 30px;
+  }
+  input[type="search"] {
+    width: 90%;
+    height: 30px;
+  }
+}
+/* スマートフォンサイズ（576px）以下 */
+@media screen and (max-width:576px) {
+  // カスタマー
+  // トップ画面
+  .genre_search{
+    width: 80%;
+  }
+  // about画面
+  #about{
+    font-size: 50px;
+  }
+  .about_p{
+    font-size: 15px;
+  }
+  // フォームサイズ
+  input[type="text"] {
+    width: 90%;
+    height: 30px;
+  }
+  input[type="email"] {
+    width: 300px;
+    height: 30px;
+  }
+  input[type="password"] {
+    width: 300px;
+    height: 30px;
+  }
+  input[type="search"] {
+    width: 90%;
+    height: 30px;
+  }
+  table {
+    display: block;
+    width: 100%;
+  }
+  table tbody {
+    display: block;
+    width: 100%;
+  }
+  table tr {
+    display: block;
+    width: 100%;
+  }
+  table th {
+    display: block;
+    width: 100%;
+  }
+  table td {
+    display: block;
+    width: 100%;
+  }
+  .box{
+    display: block;
+    width: 100%;
+  }
 }
