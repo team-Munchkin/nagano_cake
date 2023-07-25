@@ -20,6 +20,18 @@ ja:
         finish: "製作完了"
 
   activerecord:
+    attributes:
+      customer:
+        family_name: "名前（姓）"
+        first_name: "名前（名）"
+        family_name_kana: "名前（セイ）"
+        first_name_kana: "名前（メイ）"
+        email: "メールアドレス"
+        post_code: "郵便番号"
+        address: "住所"
+        phone_number: "電話番号"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -1,28 +1,40 @@
-<h4>会員一覧</h4>
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.id %></td>
-        <td><%= link_to customer.family_name + customer.first_name,admin_customer_path(customer) %></td>
-        <td><%= customer.email %></td>
-        <td>
-           <% if customer.is_deleted == true %>
-             <%= "退会" %>
-           <% else %>
-             <%= "有効" %>
-           <% end %>
-        </td>
+<div class="container py-5">
+  <div class="row ml-md-5 ml-0 mb-3">
+    <h4 class="title px-3 col-lg-2 col-md-4 col-12 text-center">会員一覧</h4>
+  </div>
+  <div class="col-10 offset-1">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr class="head">
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr class="t-body mb-sm-0 mb-3">
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.family_name + customer.first_name,admin_customer_path(customer) %></td>
+            <td><%= customer.email %></td>
+            <td>
+               <% if customer.is_deleted == true %>
+                 <span class="text-secondary font-weight-bold">
+                   <%= "退会" %>
+                 </span>
+               <% else %>
+                 <span class="text-success font-weight-bold">
+                   <%= "有効" %>
+                 </span>
+               <% end %>
+            </td>
 
-    <% end %>
-  </tbody>
-</table>
-
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @customers, outer_window: 3 %>
+  </div>
+</div>

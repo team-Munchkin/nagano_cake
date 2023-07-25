@@ -1,59 +1,63 @@
-<div class="container">
+<div class="container py-5">
   <div class="row">
-    <div class="col-3 text-center">
-      <h4 class="mb-5 font-weight-bold" style="background-color: #f1f1f1;"><%= @customer.family_name + @customer.first_name %>の会員詳細</h4>
+    <div class="col-xl-3 col-md-5 col-11 offset-md-1 offset-0 text-center">
+      <h4 class="mb-5 font-weight-bold title"><%= @customer.family_name + @customer.first_name %>の会員詳細</h4>
     </div>
   </div>
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>会員ID</div>
-   <div class= 'col-10'><%= @customer.id %></div>
+   <div class='col-md-2 col-12 offset-1'>会員ID</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%= @customer.id %></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>氏名</div>
-   <div class= 'col-10'><%= @customer.family_name %> <%= @customer.first_name %></div>
+   <div class='col-md-2 col-12 offset-1'>氏名</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%= @customer.family_name %> <%= @customer.first_name %></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>カナ</div>
-   <div class= 'col-10'><%= @customer.family_name_kana %> <%= @customer.first_name_kana %></div>
+   <div class='col-md-2 col-12 offset-1'>カナ</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%= @customer.family_name_kana %> <%= @customer.first_name_kana %></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>郵便番号</div>
-   <div class= 'col-10'><%= @customer.post_code %></div>
+   <div class='col-md-2 col-12 offset-1'>郵便番号</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%= @customer.post_code %></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>住所</div>
-   <div class= 'col-10'><%= @customer.address %></div>
+   <div class='col-md-2 col-12 offset-1'>住所</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%= @customer.address %></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>電話番号</div>
-   <div class= 'col-10'><%=@customer.phone_number%></div>
+   <div class='col-md-2 col-12 offset-1'>電話番号</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%=@customer.phone_number%></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>メールアドレス</div>
-   <div class= 'col-10'><%= @customer.email%></div>
+   <div class='col-md-2 col-12 offset-1'>メールアドレス</div>
+   <div class= 'col-md-9 col-12 offset-md-0 offset-2'><%= @customer.email%></div>
   </div>
 
   <div class="row justify-content-between mb-4">
-   <div class='col-2'>会員ステータス</div>
-   <div class= 'col-10'>
+   <div class='col-md-2 col-12 offset-1 '>会員ステータス</div>
+   <div class= 'col-md-9 col-12'>
      <% if @customer.is_deleted == true %>
+      <span class="text-secondary font-weight-bold offset-md-0 offset-2">
        <%= "退会" %>
+      </span>
      <% else %>
-       <%= "有効" %>
+       <span class="text-success font-weight-bold offset-md-0 offset-2">
+        <%= "有効" %>
+       </span>
      <% end %>
    </div>
   </div>
   <div class="row justify-content-around">
-   <div class="col-2">
+   <div class="col-md-2 col-8 offset-md-1 offset-3">
     <%= link_to "編集する", edit_admin_customer_path , class: "btn btn-sm btn-success px-4" %>
    </div>
-   <div class="col-10">
+   <div class="col-md-9 col-8 offset-md-0 offset-2 mt-md-0 mt-3">
     <%= link_to "注文履歴一覧を見る", orders_path, class: "btn btn-sm btn-primary px-4"%>
    </div>
   </div>
