@@ -43,12 +43,13 @@ class Public::OrdersController < ApplicationController
       CartItem.destroy_all
       redirect_to '/orders/complete'
     else
+      flash[:notice] = "正しい内容を入力してください"
       redirect_to '/orders/new'
     end
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page]).per(3)
   end
 
   def show
