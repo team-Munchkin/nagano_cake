@@ -1,31 +1,53 @@
-<h1>注文履歴一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= order.post_address_display %></td>
-      <td>
-        <% order.order_items.each do |order_item| %>
-          <%= order_item.item.name %>
-        <% end %>
-      </td>
-      <td><%= order.total_price.to_s(:delimited) %>円</td>
-      <td>
-         <%= order.status_i18n %>
-       </td>
-      <td><%= link_to "表示する", order_path(order.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row justify-conetnt-center">
+    <h4 class="col-md-3 offset-1 mt-5 mb-5 font-weight-bold text-center" style="background-color: #f1f1f1;">注文情履歴一覧</h4>
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead class="", style="background-color: #f1f1f1">
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td class="align-middle">
+              <%= order.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td class="align-middle">
+              〒<%= order.post_code %></br>
+              <%= order.address %></br>
+              <%= order.post_name %>
+            </td>
+            <td class="align-middle">
+              <% order.order_items.each do |order_item| %>
+                <%= order_item.item.name %></br>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <%= order.total_price.to_s(:delimited) %>円
+            </td>
+            <td class="align-middle">
+               <%= order.status_i18n %>
+             </td>
+            <td class="text-center align-middle">
+              <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <div class="d-flex bd-highlight justify-content-center mb-2">
+      <%= paginate @orders %>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+

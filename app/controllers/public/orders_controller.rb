@@ -28,24 +28,28 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
-    @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart|
-      @order_item = OrderItem.new
-      @order_item.item_id = cart.item_id
-      @order_item.order_id = @order.id
-      @order_item.quantity = cart.quantity
-      @order_item.tax_price = cart.item.price
-      @order_item.order_id = @order.id
-      @order_item.production_status = 0
-      @order_item.save!
+    if @order.save
+      @cart_items = current_customer.cart_items.all
+      @cart_items.each do |cart|
+        @order_item = OrderItem.new
+        @order_item.item_id = cart.item_id
+        @order_item.order_id = @order.id
+        @order_item.quantity = cart.quantity
+        @order_item.tax_price = cart.item.taxin_price
+        @order_item.order_id = @order.id
+        @order_item.production_status = 0
+        @order_item.save!
+      end
+      CartItem.destroy_all
+      redirect_to '/orders/complete'
+    else
+      flash[:notice] = "正しい内容を入力してください"
+      redirect_to '/orders/new'
     end
-    CartItem.destroy_all
-    redirect_to '/orders/complete'
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page]).per(3)
   end
 
   def show
