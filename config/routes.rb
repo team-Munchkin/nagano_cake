@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
   scope module: :public do
     get 'customers/edit'  => 'customers#edit' ,as: 'edit_customers'
     patch 'customers' => 'customers#update'
