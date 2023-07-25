@@ -4,13 +4,21 @@ ja:
       status:
         pay_waiting: "入金待ち"
         pay_confirming: "入金確認"
-        pay_making: "制作中"
+        pay_making: "製作中"
         pay_preparation: "発送準備中"
         pay_sended: "発送済み"
 
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+
+    order_item:
+      production_status:
+        impossible_manufacture: "着手不可"
+        waiting_manufacture: "製作待ち"
+        manufacturing: "製作中"
+        finish: "製作完了"
+
   activerecord:
     errors:
       messages:
@@ -188,8 +196,8 @@ ja:
   time:
     am: 午前
     formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      long: "%Y/%m/%d %H:%M"
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 "
+      long: "%Y/%m/%d %H:%M:%S"
       short: "%m/%d %H:%M"
     pm: 午後
 
