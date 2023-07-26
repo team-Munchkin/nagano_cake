@@ -1,16 +1,14 @@
 
- <div class="container">
+<div class="container">
   <div class="row">
-   <h4 class="col-3 offset-1 mb-5 mt-3 font-weight-bold text-center" style="background-color: #f1f1f1;">注文履歴詳細</h4>
+    <h4 class="col-3 offset-1 mb-5 mt-3 font-weight-bold text-center" style="background-color: #f1f1f1;">注文履歴詳細</h4>
     <div class="col-8"></div>
   </div>
 
-
-
-   <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
-    <table>
-     <div class="row mb-2">
-       <tr>
+  <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+  <table>
+      <div class="row mb-2">
+      <tr>
         <td class='col-md-5'>購入者</td>
         <td class='col-md-7'><%= @order.customer.family_name %><%= @order.customer.first_name %></td>
       </tr>
@@ -25,59 +23,67 @@
       <tr>
         <td class='col-md-5'>支払い方法</td>
         <td class='col-md-7'><%= @order.payment_method_i18n%></td>
-       </tr>
-       <tr>
+      </tr>
+      <tr>
         <td class='col-md-5'>注文ステータス</td>
         <td class='col-md-7'>
-            <%= f.select :status, Order.statuses_i18n.invert %>
-            <%= f.submit "更新", class: "btn btn-success" %>
+        <%= f.select :status, Order.statuses_i18n.invert %>
+        <%= f.submit "更新", class: "btn btn-success" %>
         </td>
-       </tr>
-       </div>
-    </table>
-   <% end %>
-  </div>
-
-<table>
-  <tr>
-    <td>商品名</td>
-    <td>単価(税込)</td>
-    <td>数量</td>
-    <td>小計</td>
-    <td>製作ステータス</td>
-  </tr>
-<% @order_items.each do |order_item| %>
-
-<% @sum = 0 %>
-<% @sum += order_item.item.taxin_price %>
-
-<%= form_with model: order_item , url: admin_order_item_path(order_item.id) , method: :patch , local: true do |f| %>
-    </table>
-
-
-        <tr>
-          <td><%= order_item.item.name %></td>
-          <td><%= order_item.item.taxin_price %></td>
-          <td>
-            <%= f.select :production_status, OrderItem.production_statuses_i18n.invert %>
-            <%= f.submit "更新", class: "btn btn-success" %>
-          </td>
-        </tr>
-      <% end %>
-
-      <tr>
-        <td>商品合計</td>
-        <td><%= @sum %>円</td>
       </tr>
-      <tr>
-        <td>送料</td>
-        <td>800円</td>
-      </tr>
-      <tr>
-        <td>請求金額合計</td>
-        <td><%= @sum + 800 %>円</td>
-      </tr>
+    </div>
   </table>
-<% end %>
-
+  <% end %>
+  
+  <table class="table table-bordered">
+    <thead class="", style="background-color: #f1f1f1">
+      <tr>
+        <td>商品名</td>
+        <td>単価(税込)</td>
+        <td>数量</td>
+        <td>小計</td>
+        <td>製作ステータス</td>
+      </tr>
+    </thead>
+    <% @sum = 0 %>
+    <% @order_items.each do |order_item| %>
+    <%= form_with model: order_item , url: admin_order_item_path(order_item.id) , method: :patch , local: true do |f| %>
+     <tr>
+      <td class="align-middle">
+      <%= order_item.item.name %>
+      </td>
+      <td class="align-middle">
+      <%= order_item.item.taxin_price.to_s(:delimited) %>
+      </td>
+      <td class="align-middle">
+      <%= order_item.quantity %>
+      </td>
+      <td class="align-middle">
+      <%= order_item.order_subtotal.to_s(:delimited) %>
+        <% @sum += order_item.order_subtotal %>
+      </td>
+      <td class="align-middle">
+      <%= f.select :production_status, OrderItem.production_statuses_i18n.invert %>
+      <%= f.submit "更新", class: "btn btn-success" %>
+      </td>
+     </tr>
+    <% end %>
+    <% end %>
+  </table>
+  
+  <table class="table table-bordered">
+    <tr>
+      <th class="", style="background-color: #f1f1f1">商品合計</th>
+      <td><%= @sum.to_s(:delimited) %></td>
+    </tr>
+    <tr>
+      <th class="", style="background-color: #f1f1f1">送料</th>
+      <td><%= @order.postage %></td>
+    </tr>
+    <tr>
+      <th class="", style="background-color: #f1f1f1">請求合計</th>
+      <td><%= (@sum + @order.postage).to_s(:delimited) %></td>
+    </tr>
+  </table>
 </div>
+

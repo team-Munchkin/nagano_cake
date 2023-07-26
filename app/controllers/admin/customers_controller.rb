@@ -13,6 +13,11 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+ def history
+  @customer = Customer.find(params[:id])
+  @orders = @customer.orders
+ end
+
   def update
     customer = Customer.find(params[:id])
     if customer.update(customer_params)
