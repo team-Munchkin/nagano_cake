@@ -7,14 +7,12 @@
      <div class="col-md-8"></div>
      <div class="col-xs-12 col-md-9">
        <table class="table table-bordered">
-        <thead class="head">
-          <tr>
+          <tr class="head">
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
           </tr>
-        </thead>
         <tbody class="t-body">
           <% @sum = 0 %>
           <% @cart_items.each do |cart_item| %>

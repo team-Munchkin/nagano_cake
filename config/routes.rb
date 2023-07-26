@@ -31,13 +31,13 @@ Rails.application.routes.draw do
       post :confirm, on: :collection
       get :complete, on: :collection
     end
-    
+
     resources :genres, only: [:show]
-    
+
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    
-    resources :searches, only: [:index] 
-      
+
+    resources :searches, only: [:index]
+
 
  end
 
@@ -45,11 +45,13 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :customers, only: [:show, :update, :edit, :index]
+    resources :customers, only: [:show, :update, :edit, :index] do
+      get :history, on: :member
+    end
     resources :orders, only: [:show, :update]
     resources :order_items, only: [:update]
-    resources :searches, only: [:index] 
+    resources :searches, only: [:index]
   end
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
