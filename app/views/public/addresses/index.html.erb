@@ -6,15 +6,13 @@
         <%= render 'form', address: @address %>
 
       <div class="col-10">
-      <table class="table table-bordered col-12">
-        <thead>
+      <table class="table table-bordered">
           <tr class="text-center head">
             <th>郵便番号</th>
             <th>住所</th>
             <th>宛名</th>
             <th></th>
           </tr>
-        </thead>
         <tbody>
           <% @addresses.each do |address| %>
           <tr class="t-body mb-sm-0 mb-3">
