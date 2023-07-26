@@ -1,7 +1,10 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="col-md-3 offset-1 mt-5 mb-3 font-weight-bold text-center" style="background-color: #f1f1f1;">注文情報入力</h4>
+    <div class="col-1"></div>
+    <div class="col-md-3 mt-5 mb-3 font-weight-bold text-center">
+      <h4 class="title">注文情報入力</h4>
+    </div>
     <div class="col-md-8"></div>
     <div class="col-12">
       <%= form_with model: @order, url: '/orders/confirm' do |f| %>
@@ -15,21 +18,21 @@
         <h5 class="font-weight-bold">お届け先</h5>
           <div class="form-group col-11 ml-3">
             <%= f.radio_button :select_address, 0 %>
-            <span>ご自身の住所</span>
+            <%= f.label :select_address, "ご自身の住所" %>
               <div class="col-11">
                 <%= current_customer.current_address_display %>
               </div>
           </div>
           <div class="form-group col-11 ml-3">
             <%= f.radio_button :select_address, 1 %>
-            <span>登録済みの住所から選択</span>
+            <%= f.label :select_address, "登録済みの住所から選択" %>
             <div class="col-11 d-flex">
-              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), {class: "rounded flex-fill"} %>
+              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), class: "form-control flex-fill" %>
             </div>
           </div>
           <div class="form-group col-11 ml-3">
             <%= f.radio_button :select_address, 2 %>
-            <span>新しいお届け先</span>
+            <%= f.label :select_address, "新しいお届け先" %>
             <div class="d-flex col-11 mb-1">
               <span class="flex-fill bd-highlight col-3 align-items-center">郵便番号(ハイフンなし)</span>
                 <%= f.text_field :post_code, placeholder: "0000000", class: "rounded" %>

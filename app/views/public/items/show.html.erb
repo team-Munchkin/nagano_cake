@@ -17,24 +17,24 @@
       </table>
     </div>
     <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12 offset-md-1 d-flex flex-wrap">
-      <div class="col-lg-3 col-md-10 col-sm-11 col-11 offset-lg-0 offset-1 flex-fill">
+      <div class="col-lg-3 col-md-10 col-sm-11 col-11 mb-3 offset-lg-0 offset-1 flex-fill">
         <%= image_tag @item.get_image, size:'320x213' %>
       </div>
 
       <div class='col-xl-7 col-lg-11 col-md-7 col-sm-11 col-11 offset-xl-2 offset-lg-0 offset-1'>
-        <div class='group'>
-          <h2><%= @item.name %> </h2>
+        <div class='group mb-3'>
+          <h3 class="font-weight-bold"><%= @item.name %> </h3>
         </div>
 
         <div class='group'>
           <div><%= @item.introduction %></div>
         </div>
 
-        <div class='group text-inline'>
+        <div class='group text-inline  mt-5'>
           <h3>¥<%= @item.taxin_price.to_s(:delimited) %><span style= font-size:13px>(税込)</span></h3>
         </div>
 
-        <div class= 'group'>
+        <div class= 'group mt-4'>
         <% if @item.is_active == true %>
           <%= form_with model:@cart_items,url:cart_items_path,method: :post,local:true do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>

@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
     else params[:order][:select_address] == "2"
       @order.customer = current_customer
     end
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @order_new = Order.new
     render :confirm
   end
