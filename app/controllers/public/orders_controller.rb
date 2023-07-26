@@ -20,7 +20,10 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items
     if @cart_items  == []
-      redirect_to '/items'
+      @item_all = Item.all
+      @items = Item.all.order("created_at DESC").page(params[:page])
+      @genres = Genre.all
+      render template: "public/items/index"
     else
       @order_new = Order.new
       render :confirm
