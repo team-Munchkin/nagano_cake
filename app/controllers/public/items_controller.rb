@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @item_all = Item.all
-    @items = Item.page(params[:page])
+    @items = Item.all.order("created_at DESC").page(params[:page])
     @genres = Genre.all
   end
 

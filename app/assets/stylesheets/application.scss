@@ -33,11 +33,13 @@ header{
 footer{
   background-color: #6b3f31;
 }
+// タイトルの楕円の背景部分
 .title{
   background-color: #e6bfb2;
   border-radius: 20px;
   color: #3f312b;
 }
+// テーブルのth部分
 .head{
   background-color: #e6bfab;
   color: #3f312b;
@@ -101,6 +103,28 @@ footer{
   padding-left: 15px;
   line-height: 2;
 }
+
+// ボタンデザイン
+// .basic_btn{
+//   color: white;
+//   background-color: #e29676;
+//   padding: 3px 8px;
+//   border-color: #e29676;
+//   border-radius: 6px;
+// }
+// .basic_btn:hover{
+//   color: white;
+// }
+// .blue_btn{
+//   color: white;
+//   background-color: #00afcc;
+//   padding: 3px 8px;
+//   border-color: #00afcc;
+//   border-radius: 6px;
+// }
+// .blue_btn:hover{
+//   color: white;
+// }
 
 
 // 以下レスポンシブ

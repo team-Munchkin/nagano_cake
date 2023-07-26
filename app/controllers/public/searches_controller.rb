@@ -4,7 +4,7 @@ class Public::SearchesController < ApplicationController
     @keyword = search_params[:keyword]
     @items = Item.search(search_params[:keyword])
     @search_items_all = @items.all
-    @search_items = @items.page(params[:page]).per(12)
+    @search_items = @items.order("created_at DESC").page(params[:page]).per(12)
   end
 
 
