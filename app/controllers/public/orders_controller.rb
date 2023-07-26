@@ -19,8 +19,12 @@ class Public::OrdersController < ApplicationController
       @order.customer = current_customer
     end
     @cart_items = current_customer.cart_items
-    @order_new = Order.new
-    render :confirm
+    if @cart_items  == []
+      redirect_to '/items'
+    else
+      @order_new = Order.new
+      render :confirm
+    end
   end
 
   def complete
