@@ -17,7 +17,7 @@
        </div>
       <% else %>
         <table class="table table-bordered">
-          <thead>
+
             <tr class="head">
                 <th class="align-middle", style="width: 40%">商品名</th>
                 <th class="align-middle", style="width: 15%">単価(税込)</th>
@@ -25,10 +25,10 @@
                 <th class="align-middle", style="width: 15%">小計</th>
                 <th class="align-middle", style="width: 15%"></th>
             </tr>
-          </thead>
+
                 <% @sum = 0 %>
                 <% @cart_items.each do |cart_item| %>
-          <tbody class="t-body">
+           <tbody class="t-body">
             <tr class="mb-sm-0 mb-3">
                 <td class="align-middle">
                 <%= image_tag cart_item.item.get_image, size:'64x42' %>
