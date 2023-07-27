@@ -15,9 +15,9 @@
   </div>
   <div class="d-flex justify-content-end">
   <% if f.object.new_record? %>
-      <%= f.submit "新規登録", class: 'form_control bd-highlight btn btn-success px-5 my-md-0 my-4', size: "50" %>
-    <% else %>
-      <%= f.submit "変更を保存", class: 'form_control bd-highlight btn btn-success px-5 my-md-0 my-4', size: "50" %>
-    <% end %>
+    <%= f.submit "新規登録", class: 'form_control bd-highlight btn btn-success px-5 my-md-0 my-4', size: "50" %>
+  <% else %>
+    <%= f.submit "変更を保存", class: 'form_control bd-highlight btn btn-success px-5 my-md-0 my-4', size: "50" %>
+  <% end %>
   </div>
 <% end %>
