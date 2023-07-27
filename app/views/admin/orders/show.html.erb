@@ -1,32 +1,31 @@
 
 <div class="container">
   <div class="row">
-    <h4 class="col-3 offset-1 mb-5 mt-3 font-weight-bold text-center" style="background-color: #f1f1f1;">注文履歴詳細</h4>
-    <div class="col-8"></div>
+    <h4 class="title col-md-3 col-sm-8 col-10 offset-md-1 offset-sm-2 offset-1 mt-5 mb-md-3 text-center">注文履歴詳細</h4>
   </div>
 
   <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
   <table>
-      <div class="row mb-2">
+    <div class="table row justify-content-between mb-2">
       <tr>
-        <td class='col-md-5'>購入者</td>
-        <td class='col-md-7'><%= @order.customer.family_name %><%= @order.customer.first_name %></td>
+        <td class='col-md-5 col-sm-2'>購入者</td>
+        <td class='col-md-7 col-sm-4 mb-3'><%= @order.customer.family_name %><%= @order.customer.first_name %></td>
       </tr>
       <tr>
-        <td class='col-md-5'>注文日</td>
-        <td class='col-md-7'><%= l @order.created_at %></td>
+        <td class='col-md-5 col-sm-2'>注文日</td>
+        <td class='col-md-7 col-sm-4 mb-3'><%= l @order.created_at %></td>
       </tr>
       <tr>
-        <td class='col-md-5'>配送先</td>
-        <td class='col-md-7'><%= @order.post_address_display %></td>
+        <td class='col-md-5 col-sm-2'>配送先</td>
+        <td class='col-md-7 col-sm-4 mb-3'><%= @order.post_address_display %></td>
       </tr>
       <tr>
-        <td class='col-md-5'>支払い方法</td>
-        <td class='col-md-7'><%= @order.payment_method_i18n%></td>
+        <td class='col-md-5 col-sm-2'>支払い方法</td>
+        <td class='col-md-7 col-sm-4  mb-3'><%= @order.payment_method_i18n%></td>
       </tr>
       <tr>
-        <td class='col-md-5'>注文ステータス</td>
-        <td class='col-md-7'>
+        <td class='col-md-5 col-sm-2'>注文ステータス</td>
+        <td class='col-md-7 col-sm-4 mb-3'>
         <%= f.select :status, Order.statuses_i18n.invert %>
         <%= f.submit "更新", class: "btn btn-success" %>
         </td>
@@ -34,10 +33,13 @@
     </div>
   </table>
   <% end %>
-  
-  <table class="table table-bordered">
-    <thead class="", style="background-color: #f1f1f1">
-      <tr>
+
+  <div class="row justify-content-between mt-4">
+   <div class="col-md-8 mb-sm-4 col-sm-12">
+     <div class="table-responsive">
+  <table class="table table-bordered text-nowrap">
+    <thead>
+      <tr class= "head">
         <td>商品名</td>
         <td>単価(税込)</td>
         <td>数量</td>
@@ -70,20 +72,24 @@
     <% end %>
     <% end %>
   </table>
-  
+  </div>
+  </div>
+  <div class="col-md-4 col-sm-12">
   <table class="table table-bordered">
     <tr>
-      <th class="", style="background-color: #f1f1f1">商品合計</th>
+      <th class="head">商品合計</th>
       <td><%= @sum.to_s(:delimited) %></td>
     </tr>
     <tr>
-      <th class="", style="background-color: #f1f1f1">送料</th>
+      <th class="head">送料</th>
       <td><%= @order.postage %></td>
     </tr>
     <tr>
-      <th class="", style="background-color: #f1f1f1">請求合計</th>
+      <th class="head">請求合計</th>
       <td><%= (@sum + @order.postage).to_s(:delimited) %></td>
     </tr>
   </table>
+  </div>
+ </div>
 </div>
 

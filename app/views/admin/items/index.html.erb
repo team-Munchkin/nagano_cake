@@ -1,10 +1,9 @@
 <div class= "container py-5">
    <div class="row">
-    <div class="col-lg-2 col-md-3 col-11 text-center">
+    <div class="col-lg-2 col-md-3 col-sm-11 col-9 text-center">
      <h4 class="title">商品一覧</h4>
-
     </div>
-   <div class="col-1 offset-lg-9 offset-md-8">
+   <div class="col-3 offset-lg-9 col-sm-1 offset-md-8">
     <%= link_to new_admin_item_path do %>
     <i class="fa-regular fa-circle-up fa-2xl" style="color: #7b5544;"></i>
     <% end %>
@@ -12,7 +11,8 @@
   </div>
 
  <div class= "row">
-    <table class='table table-hover table-inverse'>
+   <div class="col-12 table-responsive">
+    <table class='table text-nowrap table-hover table-inverse'>
         <tr class="head">
           <th>商品ID</th>
           <th>商品名</th>
@@ -39,7 +39,9 @@
             </td>
         <% end %>
     </table>
+   </div>
   </div>
+
   <div class="row justify-content-center">
   <%= paginate @items, outer_window: 3  %>
   </div>
