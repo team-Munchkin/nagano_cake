@@ -5,28 +5,31 @@
 
         <%= render 'form', address: @address %>
 
-      <div class="col-md-10 col-xs-12">
-      <table class="table table-bordered">
-          <tr class="text-center head">
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
-            <th></th>
-          </tr>
-        <tbody>
-          <% @addresses.each do |address| %>
-          <tr class="t-body mb-sm-0 mb-3">
-            <td><%= address.post_code %></td>
-            <td><%= address.address %></td>
-            <td><%= address.name %></td>
-            <td class="text-center">
-              <%= link_to '編集する', edit_address_path(address.id),class: 'btn btn-success mr-3 px-3' %>
-              <%= link_to '削除する', address_path(address.id), method: :delete, class: 'btn btn-danger px-3' %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="col-md-10 lg-mt-0 mt-1 col-xs-12">
+
+      <div class="col-12 table-responsive">
+        <table class="table text-nowrap table-bordered">
+            <tr class="text-center head">
+              <th>郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+              <th></th>
+            </tr>
+          <tbody>
+            <% @addresses.each do |address| %>
+            <tr class="t-body mb-sm-0 mb-3">
+              <td><%= address.post_code %></td>
+              <td><%= address.address %></td>
+              <td><%= address.name %></td>
+              <td class="text-center">
+                <%= link_to '編集する', edit_address_path(address.id),class: 'btn btn-success mr-3 px-3' %>
+                <%= link_to '削除する', address_path(address.id), method: :delete, class: 'btn btn-danger px-3' %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </div>

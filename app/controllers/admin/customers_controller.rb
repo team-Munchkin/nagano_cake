@@ -15,7 +15,7 @@ class Admin::CustomersController < ApplicationController
 
  def history
   @customer = Customer.find(params[:id])
-  @orders = @customer.orders
+ @orders = @customer.orders.order("created_at DESC").page(params[:page])
  end
 
   def update

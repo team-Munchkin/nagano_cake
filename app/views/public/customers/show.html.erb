@@ -12,43 +12,45 @@
         <td><%= link_to "編集する", edit_customers_path , class: "btn btn-success px-4" %></td>
       </table>
 
-        <table class="table table-bordered border-dark">
+        <div class="col-12 table-responsive">
+          <table class="table text-nowrap table-bordered border-dark">
+            <tr>
+              <th class="head">氏名</th>
+              <td><%= current_customer.family_name %> <%= current_customer.first_name %></td>
+            </tr>
+            <tr>
+              <th class="head">カナ</th>
+              <td><%= current_customer.family_name_kana %> <%= current_customer.first_name_kana %></td>
+            </tr>
+            <tr>
+              <th class="head">郵便番号</th>
+              <td><%= current_customer.post_code %></td>
+            </tr>
+            <tr>
+              <th class="head">住所</th>
+              <td><%= current_customer.address %></td>
+            </tr>
+            <tr>
+              <th class="head">電話番号</th>
+              <td><%= current_customer.phone_number%></td>
+            </tr>
+            <tr>
+              <th class="head">メールアドレス</th>
+              <td><%= current_customer.email%></td>
+            </tr>
+          </table>
+         </div>
+
+        <table class="table table-borderless col-lg-5 col-md-5 col-sm-12 col-12">
           <tr>
-            <th class="head">氏名</th>
-            <td><%= current_customer.family_name %> <%= current_customer.first_name %></td>
+            <th style="width: 40%"><h5 class="font-weight-bold mt-2">配送先</h5></th>
+            <td><%= link_to "一覧を見る", addresses_path , class: "btn btn-sm btn-primary px-4" %></td>
           </tr>
           <tr>
-            <th class="head">カナ</th>
-            <td><%= current_customer.family_name_kana %> <%= current_customer.first_name_kana %></td>
-          </tr>
-          <tr>
-            <th class="head">郵便番号</th>
-            <td><%= current_customer.post_code %></td>
-          </tr>
-          <tr>
-            <th class="head">住所</th>
-            <td><%= current_customer.address %></td>
-          </tr>
-          <tr>
-            <th class="head">電話番号</th>
-            <td><%= current_customer.phone_number%></td>
-          </tr>
-          <tr>
-            <th class="head">メールアドレス</th>
-            <td><%= current_customer.email%></td>
+            <th style="width: 40%"><h5 class="font-weight-bold mt-2">注文履歴</h5></th>
+            <td><%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary px-4"%></td>
           </tr>
         </table>
-
-      <table class="table table-borderless col-lg-5 col-md-5 col-sm-12 col-12">
-        <tr>
-          <th style="width: 40%"><h5 class="font-weight-bold mt-2">配送先</h5></th>
-          <td><%= link_to "一覧を見る", addresses_path , class: "btn btn-sm btn-primary px-4" %></td>
-        </tr>
-        <tr>
-          <th style="width: 40%"><h5 class="font-weight-bold mt-2">注文履歴</h5></th>
-          <td><%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary px-4"%></td>
-        </tr>
-      </table>
     </div>
     <div class="col-4"></div>
   </div>

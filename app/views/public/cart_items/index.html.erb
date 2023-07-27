@@ -16,46 +16,45 @@
        </div>
       <% else %>
 
-        <table class="table table-bordered">
-
-            <tr class="head">
-                <th class="col-sm-4 col-xs-4 align-middle">商品名</th>
-                <th class="col-sm-2 col-xs-2 align-middle">単価(税込)</th>
-                <th class="col-sm-2 col-xs-2 align-middle">数量</th>
-                <th class="col-sm-2 col-xs-2 align-middle">小計</th>
-                <th class="col-sm-2 col-xs-2 align-middle"></th>
-            </tr>
-                <% @sum = 0 %>
-                <% @cart_items.each do |cart_item| %>
-           <tbody class="t-body">
-            <tr class="mb-sm-0 mb-3">
-                <td class="align-middle">
-                <%= image_tag cart_item.item.get_image, size:'64x42' %>
-                <%= cart_item.item.name %>
-                </td>
-                <td class="align-middle"><%= cart_item.item.taxin_price.to_s(:delimited) %></td>
-                <td class="text-center align-middle">
-                    <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
-                    <%= f.number_field :quantity, min: 1, max: 10, class: "mb-1" %>
-                    <%= f.submit "変更" , class: "btn btn-success" %>
-                    <% end %>
-                </td>
-                <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
-                <td class="text-center align-middle"><%= link_to "削除する", cart_item_path(cart_item.id) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger" %></td>
-            </tr>
-                <% @sum += cart_item.subtotal %>
-                <% end %>
-          </tbody>
-        </table>
+        <div class="col-12 table-responsive">
+          <table class="table text-nowrap table-bordered">
+              <tr class="head">
+                  <th class="col-sm-4 col-xs-4 align-middle">商品名</th>
+                  <th class="col-sm-2 col-xs-2 align-middle">単価(税込)</th>
+                  <th class="col-sm-2 col-xs-2 align-middle">数量</th>
+                  <th class="col-sm-2 col-xs-2 align-middle">小計</th>
+                  <th class="col-sm-2 col-xs-2 align-middle"></th>
+              </tr>
+                  <% @sum = 0 %>
+                  <% @cart_items.each do |cart_item| %>
+             <tbody class="t-body">
+              <tr class="mb-sm-0 mb-3">
+                  <td class="align-middle">
+                  <%= image_tag cart_item.item.get_image, size:'64x42' %>
+                  <%= cart_item.item.name %>
+                  </td>
+                  <td class="align-middle"><%= cart_item.item.taxin_price.to_s(:delimited) %></td>
+                  <td class="text-center align-middle">
+                      <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
+                      <%= f.number_field :quantity, min: 1, max: 10, class: "mb-1" %>
+                      <%= f.submit "変更" , class: "btn btn-success" %>
+                      <% end %>
+                  </td>
+                  <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
+                  <td class="text-center align-middle"><%= link_to "削除する", cart_item_path(cart_item.id) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger" %></td>
+              </tr>
+                  <% @sum += cart_item.subtotal %>
+                  <% end %>
+            </tbody>
+          </table>
+        </div>
       <% end %>
     </div>
     <div class= "row mb-3">
         <% if @cart_items.present? %>
-
         <div class='col-md-3 offset-md-1'><%= link_to "買い物を続ける" , root_path , class: "btn btn-primary mb-3" %></div>
-        <div class= 'col-md-2 offset-md-4 d-flex align-items-center border head'>合計金額</div>
-        <div class= 'col-md-2 d-flex align-items-center border t-body'><%= @sum.to_s(:delimited) %> </div>
-
+        <div class= 'col-md-2 py-3 col-4 offset-md-7  d-flex align-items-center border head'>合計金額</div>
+        <div class= 'col-md-2 py-3 col-4 offset-md-0 d-flex align-items-center border t-body'><%= @sum.to_s(:delimited) %> </div>
     </div>
     <div class= "row">
          <div class= 'col-md-6 offset-md-5  justify-content-center'>
