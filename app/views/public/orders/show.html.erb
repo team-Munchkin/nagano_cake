@@ -1,69 +1,68 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="col-3 offset-1 mt-5 mb-3 font-weight-bold text-center" style="background-color: #f1f1f1;">注文履歴詳細</h4>
+    <div class="col-1"></div>
+    <h4 class="col-md-3 mt-5 mb-3 text-center title">注文履歴詳細</h4>
     <div class="col-8"></div>
-    <div class="col-8">
+    <div class="col-md-8">
       <h4>注文情報</h4>
         <table class="table table-bordered">
             <tr>
-              <th class="", style="background-color: #f1f1f1">注文日</th>
-              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+              <th class="head">注文日</th>
+              <td class="t-body"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
             <tr>
-              <th class="", style="background-color: #f1f1f1">配送先</th>
-              <td>
+              <th class="head">配送先</th>
+              <td class="t-body">
                 〒<%= @order.post_code %></br>
                 <%= @order.address %></br>
                 <%= @order.post_name %>
               </td>
             </tr>
-              <th class="", style="background-color: #f1f1f1">支払方法</th>
-              <td><%= @order.payment_method_i18n %></td>
+              <th class="head">支払方法</th>
+              <td class="t-body"><%= @order.payment_method_i18n %></td>
             <tr>
-              <th class="", style="background-color: #f1f1f1">ステータス</th>
-              <td><%= @order.status_i18n %></td>
+              <th class="head">ステータス</th>
+              <td class="t-body"><%= @order.status_i18n %></td>
             </tr>
         </table>
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
       <h4>請求情報</h4>
         <table class="table table-bordered">
             <tr>
-              <th class="", style="background-color: #f1f1f1">商品合計</th>
+              <th class="head">商品合計</th>
               <% @sum = 0 %>
               <% @order_items.each do |order_item| %>
               <% @sum += order_item.order_subtotal %>
               <% end %>
-              <td><%= @sum.to_s(:delimited) %></td>
+              <td class="t-body"><%= @sum.to_s(:delimited) %></td>
             </tr>
             <tr>
-              <th class="", style="background-color: #f1f1f1">配送料</th>
-              <td><%= @order.postage %></td>
+              <th class="head">配送料</th>
+              <td class="t-body"><%= @order.postage %></td>
             </tr>
             <tr>
-              <th class="", style="background-color: #f1f1f1">ご請求額</th>
-              <td><%= @order.total_price.to_s(:delimited) %></td>
+              <th class="head">ご請求額</th>
+              <td class="t-body"><%= @order.total_price.to_s(:delimited) %></td>
             </tr>
         </table>
       </div>
-      <div class="col-10 mb-3">
+      <div class="col-md-10 mb-3">
         <h4>注文内容</h4>
           <table class="table table-bordered">
-            <thead class="", style="background-color: #f1f1f1">
-              <tr>
+              <tr class ="head">
                 <th>商品</th>
                 <th>単価(税込)</th>
                 <th>個数</th>
                 <th >小計</th>
               </tr>
-            </thead>
             <% @order_items.each do |order_item| %>
             <tbody>
-              <tr>
-                <td class="col-8"><%= order_item.item.name %></td>
-                <td class="col-2"><%= order_item.item.taxin_price.to_s(:delimited) %></td>
-                <td class="col-1"><%= order_item.quantity %></td>
-                <td class="col-1"><%= order_item.order_subtotal.to_s(:delimited) %></td>
+              <tr class="t-body">
+                <td class="col-md-8"><%= order_item.item.name %></td>
+                <td class="col-md-2"><%= order_item.item.taxin_price.to_s(:delimited) %></td>
+                <td class="col-md-1"><%= order_item.quantity %></td>
+                <td class="col-md-1"><%= order_item.order_subtotal.to_s(:delimited) %></td>
               </tr>
             </tbody>
             <% end %>
