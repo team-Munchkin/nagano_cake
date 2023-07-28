@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8 col-12 justify-content-center">
       <h4 class="col-lg-3 col-md-4 col-sm-12 col-12 mb-5 text-center title">ログイン</h4>
-      <p class="col-lg-5 col-md-11 col-sm-12 col-12 ml-md-3  font-weight-bold text-center title">会員の方はこちらからログイン</p>
+      <p class="col-lg-5 col-md-11 col-sm-12 col-12 ml-md-3  text-center title">会員の方はこちらからログイン</p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="d-flex flex-wrap bd-highlight">
         <span class="flex-fill bd-highlight col-xl-1 col-sm-0 col-0"></span>
@@ -26,7 +26,7 @@
         </p>
       </div>
       <% end %>
-      <p class="col-lg-3 col-md-11 col-sm-12 col-12 ml-md-3 mt-5 font-weight-bold text-center title">会員登録がお済みでない方</p>
+      <p class="col-lg-5 col-md-11 col-sm-12 col-12 ml-md-3 mt-5 text-center title">会員登録がお済みでない方</p>
       <p class="ml-5">　　<%= render "public/shared/links" %>　から新規登録を行ってください。</p>
     </div>
   </div>
